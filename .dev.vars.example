@@ -1,5 +1,7 @@
-BETTER_AUTH_SECRET=remplace-moi-par-une-longue-chaine-aleatoire
-# GOOGLE_CLIENT_ID=
-# GOOGLE_CLIENT_SECRET=
-# RESEND_API_KEY=
-# EMAIL_FROM=Mon app <noreply@mondomaine.fr>
+# Secrets locaux (copier en .dev.vars, jamais commité). En prod : tableau de bord Cloudflare → Worker → Settings → Variables and Secrets.
+KIT_AUTH_SECRET=remplacer-par-une-longue-chaine-aleatoire
+KIT_GOOGLE_CLIENT_ID=
+KIT_GOOGLE_CLIENT_SECRET=
+# Facultatif : lien de connexion par email (Resend)
+# KIT_RESEND_API_KEY=
+# KIT_EMAIL_FROM=Mon app <noreply@mondomaine.fr>

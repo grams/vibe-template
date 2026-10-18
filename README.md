@@ -1,22 +1,24 @@
-# Nouvelle app
+# Mon app
 
-Modèle d'app web avec connexion (Google ou lien par email) et base de données, hébergée gratuitement sur Cloudflare.
+App web avec connexion Google, accès sur invitation et back-office, hébergée gratuitement sur Cloudflare. Construite sur [vibe-kit](https://github.com/grams/vibe-kit).
 
-## Démarrer une nouvelle app
+## Travailler sur l'app avec Claude
 
-1. Sur GitHub : bouton **Use this template** → **Create a new repository**.
-2. Récupérer le dépôt sur l'ordinateur et ouvrir le dossier dans Claude Code.
-3. Demander à Claude : « installe le projet ». Il lancera `npm install` puis `npm run setup` (un compte Cloudflare gratuit est nécessaire ; une page de connexion s'ouvrira).
-4. Décrire l'app voulue à Claude. Les règles qu'il doit suivre sont dans `AGENTS.md`.
+**À faire une fois dans Claude Desktop :**
+- donner à Claude l'accès à GitHub (dépôt de l'app) ;
+- ajouter le connecteur **Cloudflare Developer Platform** ;
+- facultatif : installer les skills Cloudflare (dépôt [`cloudflare/skills`](https://github.com/cloudflare/skills)).
 
-## Commandes utiles
+**Ensuite :**
+1. Décrire à Claude ce que l'app doit faire. Les règles qu'il suit sont dans `AGENTS.md`.
+2. Claude pousse ses changements sur une branche ; Cloudflare construit une **version d'aperçu** et Claude donne le lien.
+3. Tester l'aperçu. Si c'est bon, dire à Claude de mettre en production : il fusionne dans `main` et Cloudflare met l'app à jour.
 
-| Commande | Effet |
-|---|---|
-| `npm run dev` | Lance l'app sur http://localhost:8787 |
-| `npm run deploy` | Met l'app en ligne |
-| `npm run kit:check` | Vérifie si vibe-kit a une mise à jour |
-| `npm run kit:upgrade` | Met à jour vibe-kit |
+**Gérer les accès** : se connecter avec un compte admin, menu **Administration** → inviter des personnes, autoriser des domaines (ex. `famille.fr`), voir et supprimer des utilisateurs.
+
+## Créer une nouvelle app
+
+Voir [SETUP.md](SETUP.md) (une fois par app, idéalement par un développeur).
 
 ## Coût
 
