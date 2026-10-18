@@ -25,6 +25,7 @@ La personne qui te parle n'est généralement pas développeuse et utilise le pl
 | Configuration | `wrangler.jsonc`, `vite.config.ts` | Wrangler, plugin Cloudflare pour Vite |
 | Types des bindings | `worker-configuration.d.ts` | généré par `npm run cf-typegen` |
 | Connexion, accès, back-office | `vibe-kit`, installé depuis GitHub (`package.json`) | Better Auth, Google, invitations, domaines |
+| Politique npm | `.npmrc` (`allow-git=root`), `allowScripts` dans `package.json` | autorise npm 12+ à installer vibe-kit depuis GitHub ; ne pas supprimer |
 
 ## Règle n° 1 : le préfixe `kit` appartient au socle
 
