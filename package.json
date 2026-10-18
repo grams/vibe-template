@@ -19,7 +19,7 @@
     "kit:upgrade": "vibe-kit upgrade"
   },
   "dependencies": {
-    "vibe-kit": "^0.0.1",
+    "vibe-kit": "git+https://github.com/grams/vibe-kit.git",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-router": "^8.4.0",

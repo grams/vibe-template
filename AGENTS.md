@@ -24,7 +24,7 @@ La personne qui te parle n'est généralement pas développeuse et utilise le pl
 | Base de données | `migrations/` ; binding `c.env.DB` | Cloudflare D1 (SQLite) |
 | Configuration | `wrangler.jsonc`, `vite.config.ts` | Wrangler, plugin Cloudflare pour Vite |
 | Types des bindings | `worker-configuration.d.ts` | généré par `npm run cf-typegen` |
-| Connexion, accès, back-office | `vibe-kit` (dépendance npm) | Better Auth, Google, invitations, domaines |
+| Connexion, accès, back-office | `vibe-kit`, installé depuis GitHub (`package.json`) | Better Auth, Google, invitations, domaines |
 
 ## Règle n° 1 : le préfixe `kit` appartient au socle
 
@@ -124,7 +124,7 @@ await api(`/api/notes/${id}`, { method: "DELETE" });
 **En début de session**, lancer `npm run kit:check`. Si une mise à jour est disponible, le signaler en une phrase et proposer de la faire (pas sans accord).
 
 1. Branche dédiée, `git status` propre.
-2. `npm run kit:upgrade` : installe la dernière version et copie les nouvelles migrations `*_kit-*.sql`.
+2. `npm run kit:upgrade` : pointe la dépendance sur la dernière version (tag Git de `grams/vibe-kit`), réinstalle et copie les nouvelles migrations `*_kit-*.sql`.
 3. Relire `node_modules/vibe-kit/README.md` et adapter l'app si l'API a changé.
 4. `npm run typecheck && npm run build`, push, tester l'aperçu (connexion, back-office, fonctionnalités principales), puis fusionner.
 
@@ -141,7 +141,7 @@ Créer la ressource (connecteur Cloudflare ou `npx wrangler kv namespace create 
 | `secret KIT_AUTH_SECRET manquant` | Secret absent : `.dev.vars` en local, *Variables and Secrets* en prod |
 | `no such table` | Migration non appliquée (`npm run db:migrate` en local ; en prod, vérifier le log de build) |
 | Bouton Google absent | `KIT_GOOGLE_CLIENT_ID` / `KIT_GOOGLE_CLIENT_SECRET` non définis |
-| Google : `redirect_uri_mismatch` | Ajouter `https://<domaine>/api/kit/auth/callback/google` dans la console Google |
+| Google : `redirect_uri_mismatch` | Déclarer `https://<production>/api/kit/auth/callback/google` chez Google ; sur un aperçu, vérifier le secret `KIT_PRODUCTION_URL` |
 | « Accès refusé » à la connexion | Compte non invité et domaine non autorisé : l'ajouter dans Administration → Accès |
 | Pas d'onglet Administration | L'email n'est pas dans `admins` (`worker/index.ts`) |
 | Build Cloudflare en échec | Lire le log du build dans le tableau de bord ; reproduire avec `npm run build` |

@@ -20,9 +20,8 @@ Reporter l'identifiant obtenu dans `wrangler.jsonc` → `database_id`, puis comm
 
 1. https://console.cloud.google.com/apis/credentials → **Créer des identifiants** → **ID client OAuth** → **Application Web**.
 2. **URI de redirection autorisés** :
-   - `https://mon-app.<sous-domaine>.workers.dev/api/kit/auth/callback/google` (production) ;
-   - `http://localhost:5173/api/kit/auth/callback/google` (développement local) ;
-   - pour se connecter avec Google sur les aperçus, ajouter aussi l'URL d'alias de la branche d'aperçu utilisée, avec le même suffixe.
+   - `https://mon-app.<compte>.workers.dev/api/kit/auth/callback/google` (production — sert aussi aux aperçus, voir `KIT_PRODUCTION_URL`) ;
+   - `http://localhost:5173/api/kit/auth/callback/google` (développement local, facultatif).
 3. Garder l'**ID client** et le **code secret**.
 
 ## 4. Cloudflare Workers Builds
@@ -36,6 +35,7 @@ Reporter l'identifiant obtenu dans `wrangler.jsonc` → `database_id`, puis comm
 3. Worker → **Settings** → **Variables and Secrets** → ajouter en type **Secret** :
    - `KIT_AUTH_SECRET` : une longue chaîne aléatoire (`openssl rand -base64 32`) ;
    - `KIT_GOOGLE_CLIENT_ID` et `KIT_GOOGLE_CLIENT_SECRET` ;
+   - `KIT_PRODUCTION_URL` : `https://mon-app.<compte>.workers.dev` — la connexion Google des aperçus passe par la production, aucune autre URL à déclarer chez Google ;
    - facultatif, lien de connexion par email : `KIT_RESEND_API_KEY` et `KIT_EMAIL_FROM` ([resend.com](https://resend.com)).
 4. Lancer un premier déploiement (push sur `main` ou **Retry build**). Les migrations s'appliquent automatiquement.
 

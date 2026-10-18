@@ -2,6 +2,10 @@
 KIT_AUTH_SECRET=remplacer-par-une-longue-chaine-aleatoire
 KIT_GOOGLE_CLIENT_ID=
 KIT_GOOGLE_CLIENT_SECRET=
+# URL de production : la connexion Google des aperçus passe par elle (une seule URL déclarée chez Google)
+# KIT_PRODUCTION_URL=https://mon-app.compte.workers.dev
+# Local sans Google : lien de connexion par email affiché dans le terminal
+# KIT_EMAIL_LOG=1
 # Facultatif : lien de connexion par email (Resend)
 # KIT_RESEND_API_KEY=
 # KIT_EMAIL_FROM=Mon app <noreply@mondomaine.fr>
