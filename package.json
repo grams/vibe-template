@@ -1,0 +1,24 @@
+{
+  "name": "mon-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:migrate": "wrangler d1 migrations apply DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "db:new": "wrangler d1 migrations create DB",
+    "typecheck": "tsc --noEmit",
+    "kit:check": "vibe-kit version",
+    "kit:upgrade": "vibe-kit upgrade"
+  },
+  "dependencies": {
+    "vibe-kit": "^0.0.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261018.1",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.151.1"
+  }
+}
